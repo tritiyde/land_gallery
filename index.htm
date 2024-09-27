@@ -34,7 +34,7 @@
 	<nav>
 	<ul>
 		<li class="painterName">Владимир Куликов</li>
-<li ><a href="ru/gallery.html">Галерея</a></li>
+<li ><a href="index.html">Галерея</a></li>
 <li ><a href="ru/about.html">О художнике</a></li>
 <li ><a href="ru/contacts.html">Контакты</a></li>
 </ul>
@@ -1034,7 +1034,7 @@
 		<nav>
 	<ul>
 		<li class="painterName">Владимир Куликов</li>
-<li ><a href="ru/gallery.html">Галерея</a></li>
+<li ><a href="index.html">Галерея</a></li>
 <li ><a href="ru/about.html">О художнике</a></li>
 <li ><a href="ru/contacts.html">Контакты</a></li>
 </ul>
@@ -1051,6 +1051,44 @@
 			<p>Написать в <a href="https://vk.com/id164812775" target="_blank"><i>ВКонтакте</i></a></p>
 			<p>Написать в <a href="https://t.me/Kulikovartru" target="_blank"><i>Telegram</i></a></p>
 			<p>позвонить по телефону :&nbsp;<a href="tel:+79493125066">8 (949) 312-50-66</a></p>
+
+
+
+			<!-- Кнопка для открытия админ-панели -->
+<button id="adminButton">Админ-панель</button>
+
+<!-- Модальное окно -->
+<div id="adminModal" style="display: none;">
+    <div>
+        <h2>Введите пароль</h2>
+        <input type="password" id="adminPassword" placeholder="Пароль" />
+        <button onclick="checkPassword()">Войти</button>
+        <div id="adminOptions" style="display: none;">
+            <h3>Выберите действие</h3>
+            <button onclick="showUploadForm()">Загрузить изображение</button>
+            <button onclick="showDeleteForm()">Удалить изображение</button>
+            <div id="uploadForm" style="display: none;">
+                <h3>Загрузить изображение</h3>
+                <input type="file" id="imageUpload" accept="image/*" />
+                <select id="imageCategory">
+                    <option value="1">Море</option>
+                    <option value="2">Пейзаж</option>
+                    <option value="3">Натюрморт</option>
+                    <!-- Добавьте другие категории -->
+                </select>
+                <button onclick="uploadImage()">Загрузить</button>
+            </div>
+            <div id="deleteForm" style="display: none;">
+                <h3>Удалить изображение</h3>
+                <input type="text" id="imageId" placeholder="ID изображения" />
+                <button onclick="deleteImage()">Удалить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 		</div>
 	</div>
   </div>
@@ -1063,6 +1101,111 @@
 <script src="js/masonry.min.js"></script>
 <script src="js/images-loaded.js"></script>
 <script src="js/paint.js"></script>
+
+
+<script>
+const correctPassword = 'your_password'; // Замените на свой пароль
+
+function checkPassword() {
+    const password = document.getElementById('adminPassword').value;
+    if (password === correctPassword) {
+        document.getElementById('adminOptions').style.display = 'block';
+    } else {
+        alert('Неверный пароль');
+    }
+}
+
+function showUploadForm() {
+    document.getElementById('uploadForm').style.display = 'block';
+    document.getElementById('deleteForm').style.display = 'none';
+}
+
+function showDeleteForm() {
+    document.getElementById('deleteForm').style.display = 'block';
+    document.getElementById('uploadForm').style.display = 'none';
+}
+
+function uploadImage() {
+    const fileInput = document.getElementById('imageUpload');
+    const category = document.getElementById('imageCategory').value;
+    const file = fileInput.files[0];
+
+    if (!file) {
+        alert('Пожалуйста, выберите изображение для загрузки.');
+        return;
+    }
+
+    // Отправьте файл на сервер для обработки
+    const formData = new FormData();
+    formData.append('image', file);
+    formData.append('category', category);
+
+    fetch('/upload', {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Изображение загружено успешно!');
+            // Обновите HTML для галереи
+            updateGallery(data.imageId, data.imageUrl, data.imageThumbnailUrl, category);
+        } else {
+            alert('Ошибка загрузки изображения: ' + data.message);
+        }
+    });
+}
+
+function deleteImage() {
+    const imageId = document.getElementById('imageId').value;
+    fetch('/delete', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id: imageId }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Изображение удалено успешно!');
+            // Удалите изображение из галереи
+            removeImageFromGallery(imageId);
+        } else {
+            alert('Ошибка удаления изображения: ' + data.message);
+        }
+    });
+}
+
+function updateGallery(id, imageUrl, thumbnailUrl, category) {
+    const gallery = document.querySelector('.galpagename');
+    const newItem = document.createElement('div');
+    newItem.className = `gal-item galcat_${category}`;
+    newItem.setAttribute('data-id', id);
+    newItem.innerHTML = `
+        <a data-caption="<em>Название</em><br>Описание" data-group="group" href="${imageUrl}">
+            <div class="gal-info" data-id="${id}">
+                <div class="zoom"></div>
+                <div class="pic-name">Название</div>
+                <div class="pic-info">Описание</div>
+            </div>
+        </a>
+        <img src="${thumbnailUrl}" width="250" height="165" data-id="${id}">
+    `;
+    gallery.appendChild(newItem);
+}
+
+function removeImageFromGallery(id) {
+    const item = document.querySelector(`.gal-item[data-id="${id}"]`);
+    if (item) {
+        item.remove();
+    }
+}
+</script>
+
+
+
+
 
 </body>
 </html>
