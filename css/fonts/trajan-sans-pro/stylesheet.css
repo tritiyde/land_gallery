@@ -1,0 +1,30 @@
+@font-face {
+  font-family: 'TrajanSansPro';
+  src: url('TrajanSansPro-Regular.woff') format('woff'),
+       url('TrajanSansPro-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TrajanSansPro';
+  src: url('TrajanSansPro-Semibold.woff') format('woff'),
+       url('TrajanSansPro-Semibold.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TrajanSansPro';
+  src: url('TrajanSansPro-Bold.woff') format('woff'),
+       url('TrajanSansPro-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+
+
+
+
+

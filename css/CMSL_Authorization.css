@@ -1,0 +1,433 @@
+/* FLAT COLORS */
+/* Информационные сообщения */
+.CMSL_message {
+  padding: 30px 30px 30px 150px;
+  background: #fff;
+  /* обязательно для ie */
+  color: #000;
+  font-size: 18px;
+  border-radius: 4px;
+  position: relative;
+  box-shadow: 1px 1px 0 0 rgba(255, 255, 255, 0.5) inset, -1px -1px 0 0 rgba(0, 0, 0, 0.3) inset, 2px 2px 3px 0 rgba(0, 0, 0, 0.3);
+}
+.CMSL_message h1,
+.CMSL_message h2,
+.CMSL_message h3,
+.CMSL_message p {
+  color: inherit !important;
+}
+.CMSL_message .CMSL_msg_kind {
+  position: absolute;
+  font-family: FontAwesome;
+  width: 120px;
+  text-align: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding: 30px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.1);
+  font-size: 60px;
+}
+.CMSL_message .CMSL_msg_kind:after {
+  content: '\f05a';
+  color: rgba(255, 255, 255, 0.6);
+}
+.CMSL_message p {
+  margin: 0 !important;
+}
+.CMSL_error {
+  color: #ffffff !important;
+  background: #e74c3c !important;
+}
+.CMSL_error .CMSL_msg_kind:after {
+  content: '\f057';
+}
+.CMSL_info {
+  color: #ffffff !important;
+  background: #3498db !important;
+}
+.CMSL_success {
+  color: #ffffff !important;
+  background: #2ecc71 !important;
+}
+.CMSL_success .CMSL_msg_kind:after {
+  content: '\f058';
+}
+.CMSL_warning {
+  color: #ffffff !important;
+  background: #fe982a !important;
+}
+.CMSL_warning .CMSL_msg_kind:after {
+  content: '\f071';
+}
+.CMSL_closemsg {
+  font-family: FontAwesome;
+  color: #ffffff;
+  font-size: 22px;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  z-index: 500;
+  cursor: pointer;
+}
+.CMSL_closemsg:after {
+  content: '\f00d';
+}
+.CMSL_message_header {
+  font-family: museo;
+  font-size: 46px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+/* Список параметров формы */
+.CMSL_checkboxes div {
+  padding: 5px;
+  border-bottom: dashed 1px #dadada;
+}
+.CMSL_checkboxes label {
+  display: block;
+  margin-left: 30px;
+  cursor: pointer;
+}
+.CMSL_checkboxes input {
+  position: relative;
+  float: left;
+}
+.CMSL_checkboxes div:hover {
+  background: url(../img/bg-checkbox.jpg);
+}
+/* SEE IT Всплывающее окно было убрано */
+.CMSL_windowCaption {
+  padding: 15px 40px 15px 15px;
+  /* Справа кнопка закрыть окно */
+  background: #c0392b;
+  /* SEE IT. Нужно использовать переменную */
+  color: #fff;
+}
+/* Forms */
+.CMSL_Form {
+  background: #ffffff;
+  padding: 30px;
+  box-sizing: border-box;
+  border-bottom: solid 1px #b9b0a8;
+}
+#authorizationForm.CMSL_Form {
+	text-align: center;
+}
+#authorizationForm.CMSL_Form fieldset {
+	width:300px;	
+	max-width: 100%;
+	display: inline-block;
+}
+#registrationForm.CMSL_Form {
+	text-align: center;
+}
+#registrationForm.CMSL_Form fieldset {
+	width:400px;	
+	max-width: 100%;
+	display: block;
+	margin: 0 auto;
+}
+.CMSL_Form fieldset {
+  display: block;
+  border: none;
+  margin-bottom: 6px;
+  padding: 3px 0;
+  overflow: hidden;
+}
+.CMSL_Form fieldset label {
+  display: block;
+  /* float: left; */
+ /* max-width: 300px; */
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 4px 7px 0 0;
+  margin: 0 7px 0 0;
+  margin-bottom: 5px;
+}
+.CMSL_Form fieldset label.required:after {
+  content: '*';
+  font-size: 18px;
+  color: #e74c3c;
+}
+.CMSL_Form fieldset div {
+  overflow: hidden;
+  text-align: left;
+}
+.CMSL_Form fieldset textarea {
+  width: 100%;
+  box-sizing: border-box;
+  height: 100px;
+  color: #000000;
+  font-size: 16px;
+  border: none;
+  background: #eff1f8;
+}
+.CMSL_Form fieldset input[type="text"],
+.CMSL_Form fieldset input[type="password"],
+.CMSL_Form fieldset select {
+  border: 1px solid #c2b59b;
+  padding: 5px 6px 6px;
+  font-size: 16px !important;
+  margin: 0 9px 0 0;
+  background: #f1ebde;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.CMSL_Form fieldset.CMSL_valueNeeded input[type="text"],
+.CMSL_Form fieldset.CMSL_valueNeeded input[type="password"],
+.CMSL_Form fieldset.CMSL_valueNeeded select {
+	background-color: #ffcccc;
+}
+
+.CMSL_Form fieldset .big,
+.CMSL_Form fieldset .middle,
+.CMSL_Form fieldset .small {
+  box-sizing: border-box !important;
+}
+.CMSL_Form fieldset .big {
+  max-width: 501px;
+}
+.CMSL_Form fieldset .middle {
+ /* max-width: 290px; */
+}
+.CMSL_Form fieldset .small {
+  max-width: 200px;
+}
+@media screen and (max-width: 820px) {
+  .CMSL_Form fieldset div {
+    margin-left: 0;
+    width: 100%;
+  }
+  .CMSL_Form fieldset label {
+    max-width: 100%;
+    margin: 0 0 7px 0;
+    float: none;
+  }
+  .CMSL_Form fieldset .big,
+  .CMSL_Form fieldset .middle,
+  .CMSL_Form fieldset .small {
+    max-width: 100%;
+  }
+}
+.CMSL_Form .captureContainer {
+  text-align: center;
+  padding: 15px 0;
+}
+.CMSL_Form .captureContainer {
+  text-align: center;
+}
+.CMSL_FormSectionHeading {
+  color: #000000;
+  font-weight: 600;
+  font-size: 30px;
+  border-bottom: solid 1px #ecf0f1;
+  padding-bottom: 15px;
+  text-align: right;
+  margin: 15px 0;
+  font-style: italic;
+}
+.CMSL_valueNeeded {
+ /* background: #FCC; */
+}
+#CMSL_cover {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  z-index: 3000;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+#CMSL_space {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+#CMSL_coverInner {
+  background: #fff;
+  max-width: 960px;
+  width: 90%;
+  margin: 20px auto;
+  position: relative;
+}
+#CMSL_coverCloseBtn {
+  width: 36px;
+  height: 36px;
+  background: url(../img/sys/btn-close.png) no-repeat;
+  position: fixed;
+  right: 40px;
+  top: 40px;
+  cursor: pointer;
+  z-index: 1000;
+}
+#CMSL_coverCloseBtn:hover {
+  background-position: 0 -36px;
+}
+#CMSL_messageCover {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 5000;
+  display: none;
+  overflow: auto;
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+#CMSL_alertOuter {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+#CMSL_alertInner {
+  display: table-cell;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+}
+#CMSL_alertContainer {
+  width: 90%;
+  max-width: 400px;
+  margin: 0 auto;
+  height: auto;
+  position: relative;
+  background: none;
+  overflow: auto;
+  font-size: 22px;
+  display: none;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #fff;
+}
+#CMSL_alertCloseIcon {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+  z-index: 1000;
+  font-family: FontAwesome;
+}
+#CMSL_alertCloseIcon:before {
+  content: '\f00d';
+  font-size: 20px;
+  color: #fff;
+}
+#CMSL_alertCloseIcon:hover {
+  background-position: 0 -24px;
+}
+#CMSL_alertContainer h2 {
+  background: #235383;
+  padding: 20px 60px 20px 20px;
+  color: #000;
+  font-weight: normal;
+  line-height: 130%;
+  margin-bottom: 0;
+  font-weight: bold;
+  font-size: 18px;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+#CMSL_alertMessage {
+  line-height: 120%;
+  padding: 15px;
+  font-size: 20px;
+  background: #fff;
+}
+#CMSL_alertMessage label {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-size: 16px;
+  font-weight: normal;
+  padding-right: 15px;
+  box-sizing: border-box;
+}
+#CMSL_alertMessage input[type=text] {
+  padding: 3px 5px;
+  width: 100%;
+  border: none;
+  background: #ececec;
+  font-size: 20px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+#CMSL_alertMessage textarea {
+  width: 100%;
+  height: 100px;
+  box-sizing: border-box;
+  border: solid 1px #dadada;
+}
+.CMSL_buttonSection {
+  text-align: center;
+  margin-top: 30px;
+}
+.CMSL_buttonContainer {
+  text-align: center;
+  padding: 15px 0;
+  margin-top: 15px;
+  border-top: dashed 1px #dadada;
+}
+.CMSL_buttonContainer .button {
+	margin-bottom: 10px;
+}
+.CMSL_buttonContainer input {
+  padding: 12px 30px;
+  font-size: 16px;
+  width: auto;
+  margin: 5px;
+  cursor: pointer;
+  border: none;
+  background: #58B830;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 3px;
+}
+.CMSL_buttonContainer input[disabled] {
+  background: #E8E8E8;
+  cursor: default;
+}
+.freeze1 {
+  overflow: hidden;
+  margin-right: 8px;
+}
+.freeze2 {
+  overflow: hidden;
+  margin-right: 8px;
+}
+#formContainer h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  font-weight: 600;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+@media screen and (max-width: 930px) {
+  #registrationForm .CMSL_Form fieldset label {
+    max-width: none;
+    width: 100%;
+  }
+}
+
+.CMSL_h2 {
+	font-size: 18px;
+	font-weight: bold;
+	margin:30px 30px 0 30px;
+	line-height: 1.5;
+}
